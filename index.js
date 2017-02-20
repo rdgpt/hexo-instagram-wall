@@ -12,6 +12,6 @@ hexo.extend.filter.register('after_init', function() {
   return getInstagramData(config, logger);
 });
 
-hexo.extend.helper.register('instagramWall', function() {
-  return instagramWall(logger);
+hexo.extend.helper.register('instagramWall', function(count) {
+  return instagramWall(count, logger);
 }, {async: true});
