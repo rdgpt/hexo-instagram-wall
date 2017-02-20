@@ -1,0 +1,22 @@
+{
+  "name": "hexo-instagram-wall",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "hexo": "3.x"
+  },
+  "author": "James Cole <mail@ofjamescole.com>",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "hexo-fs": "^0.1.6",
+    "hexo-log": "^0.1.2",
+    "instagram-node-lib": "^0.1.1",
+    "pretty-hrtime": "^1.0.3",
+    "superagent": "^3.4.4"
+  }
+}
