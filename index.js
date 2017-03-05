@@ -12,7 +12,7 @@ const logger = require('hexo-log')({
 
 // set default options
 config.instagramWall = assign({}, {
-  enable: true,
+  enable: false,
   waterfall: true,
   itemsPerRow: 3,
   requestedCount: 18,
@@ -24,10 +24,18 @@ config.instagramWall = assign({}, {
 }, config.instagramWall);
 
 hexo.extend.filter.register('after_init', function() {
+  if (!config.instagramWall.enable) {
+    return false;
+  }
+
   return getInstagramData(config, logger);
 });
 
 hexo.extend.helper.register('instagramWall', function(requestedCount, itemsPerRow, showCaption, overlayColor, textColor, displayStyle, gutterSize) {
+  if (!config.instagramWall.enable) {
+    return '';
+  }
+
   requestedCount = parseInt(requestedCount);
   itemsPerRow = parseInt(itemsPerRow);
   showCaption = !!showCaption;
@@ -53,5 +61,9 @@ hexo.extend.helper.register('instagramWall', function(requestedCount, itemsPerRo
 }, {async: true});
 
 hexo.extend.filter.register('after_render:html', function(str, data) {
+  if (!config.instagramWall.enable) {
+    return false;
+  }
+
   return insertAssets(str, data, config, logger);
 });
